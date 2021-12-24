@@ -18,6 +18,9 @@ public class Pellet : MonoBehaviour
         {
             Eat();
         }
+        else if(collision.gameObject.tag == "Wall"){
+            gameObject.SetActive(false);
+        }
     }
 
 }
