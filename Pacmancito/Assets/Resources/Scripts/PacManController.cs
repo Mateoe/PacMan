@@ -12,6 +12,7 @@ public class PacManController : MonoBehaviour
     //Direccion del movimiento
     private Vector3 direction;
     Rigidbody _rb;
+    public static int score = 0;
 
     void Start()
     {   
@@ -69,5 +70,10 @@ public class PacManController : MonoBehaviour
         Debug.Log(_roundedposition);
    
     }
-
+    
+    public static void AcumPoints(int points)
+    {
+        score += points;
+        Debug.LogWarning(score);
+    }
 }
