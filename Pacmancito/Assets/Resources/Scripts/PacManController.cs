@@ -10,7 +10,7 @@ public class PacManController : MonoBehaviour
     public GameObject _PacManBody;
 
     //Direccion del movimiento
-    private Vector3 direction;
+    public Vector3 direction;
     Rigidbody _rb;
 
     void Start()
@@ -34,7 +34,7 @@ public class PacManController : MonoBehaviour
     }
 
     //se obtiene la direccion del movimiento del usuario con las teclas WASD o las flechas
-    void GetDirection()
+    public Vector3 GetDirection()
     {
         if(Input.GetKeyDown (KeyCode.W) || Input.GetKeyDown (KeyCode.UpArrow)){
             direction = Vector3.forward;
@@ -54,6 +54,7 @@ public class PacManController : MonoBehaviour
         }
 
         _PacManBody.transform.rotation = Quaternion.LookRotation(direction) * Quaternion.Euler(90,0,90);
+        return direction;
         
     }        
 
@@ -66,7 +67,6 @@ public class PacManController : MonoBehaviour
         _rb.MovePosition(_targetposition);
 
         Vector3 _roundedposition = new Vector3(Convert.ToSingle(Math.Round(transform.position.x,1)),Convert.ToSingle(Math.Round(transform.position.y,1)),Convert.ToSingle(Math.Round(transform.position.z,1)));
-        Debug.Log(_roundedposition);
    
     }
 
