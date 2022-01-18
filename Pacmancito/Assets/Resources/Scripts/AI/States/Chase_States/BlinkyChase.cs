@@ -23,6 +23,7 @@ public class BlinkyChase : MonoBehaviour
 
         _target = GameObject.Find("PacMan");
         _nav = GetComponent<NavMeshAgent>();
+        _nav.speed = 4;
     }
 
     void Update(){

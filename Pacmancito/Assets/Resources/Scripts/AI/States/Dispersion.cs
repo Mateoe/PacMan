@@ -15,9 +15,13 @@ public class Dispersion : MonoBehaviour
     [SerializeField]
     private NavMeshAgent _nav;
 
+    [SerializeField]
+    private Collider _col;
+
 
     void Start()
     {
+        _col = gameObject.GetComponent<Collider>();
         if(_ghostID == GhostID.Blinlky){
             _dispersiontarget = GameObject.Find("BlinkyDispersion");
         }
@@ -32,12 +36,23 @@ public class Dispersion : MonoBehaviour
         }
 
         _nav = GetComponent<NavMeshAgent>();
+
+        _col = gameObject.GetComponent<Collider>();
+        _col.enabled = true;
+        
     }
 
     
     void Update()
     {
+        _nav.speed = 4;
+        _col.enabled = true;
         SetDispersion();
+
+        if(Vector3.Distance(transform.position,_dispersiontarget.transform.position)<0.05)
+        {
+            EventSystem.GhostDisperse(_ghostID);
+        }
     }
 
     public void SetDispersion(){

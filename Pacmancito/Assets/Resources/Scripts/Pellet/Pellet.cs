@@ -11,6 +11,18 @@ public class Pellet : MonoBehaviour
     void Start()
     {
         _me = this.gameObject;
+
+        if((transform.position.x >= 2.5) && (transform.position.x <= 15.5))
+        {
+            if ((transform.position.z >= 6.5) && (transform.position.z <= 16.5)){
+                Destroy(_me);
+            }
+        }
+
+        if ((transform.position.z == 11.5) && ( transform.position.x <=  0.5 || transform.position.x >=  17.5 ))
+        {
+                Destroy(_me);
+        }
     }
 
 

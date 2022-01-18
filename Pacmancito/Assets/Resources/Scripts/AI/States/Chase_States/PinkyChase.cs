@@ -17,6 +17,7 @@ public class PinkyChase : MonoBehaviour
     private Vector3 _destinationpoint;
 
     NavMeshHit _hit;
+
     
     public void AmbushChase(){
         _destinationpoint = (_target.transform.position + 2*_pacman.GetDirection());
@@ -34,6 +35,7 @@ public class PinkyChase : MonoBehaviour
         _target = GameObject.Find("PacMan");
         _pacman = _target.GetComponent<PacManController>();
         _nav = GetComponent<NavMeshAgent>();
+        _nav.speed = 4;
     }
 
     void Update(){

@@ -22,6 +22,7 @@ public class Lifes : MonoBehaviour
     {
         _lifes = GameObject.Find("Lifes");
         Instance();
+        EventSystem.OnPacManDeath += Destroy;
     }
 
     private void Instance()
@@ -37,7 +38,20 @@ public class Lifes : MonoBehaviour
         }
     }
 
-    void Update()
-    {
+    private void Destroy()
+    {    
+        for(int i = 0;i < 1; i++)
+        {
+            if(_lifesList.Count >0)
+            {
+                Destroy(_lifesList[i]);
+                _lifesList.Remove(_lifesList[i]);
+                _lifesCount -=1;
+            }
+            else
+            {
+                EventSystem.GameOver();
+            }
+        }
     }
 }

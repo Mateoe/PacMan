@@ -15,8 +15,6 @@ public class ClydeChase : MonoBehaviour
     private NavMeshAgent _nav;
 
     private Vector3 _destinationpoint;
-
-    
     
     public void RandomChase(){
         _pathpoints = new List<Transform>(_pathpointsparent.transform.childCount);
@@ -36,6 +34,7 @@ public class ClydeChase : MonoBehaviour
     void Start(){
         _pathpointsparent = GameObject.Find("MainPoints");
         _nav = GetComponent<NavMeshAgent>();
+        _nav.speed = 4;
     }
 
     void Update(){

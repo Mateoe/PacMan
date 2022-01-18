@@ -20,7 +20,6 @@ public class InkyChase : MonoBehaviour
     private Vector3 _destinationpoint;
 
     NavMeshHit _hit;
-
     public void PatrolChase(){
         _destinationpoint = 2*((_target.transform.position + 2*_pacman.GetDirection()) - (_Blinky.transform.position))+_Blinky.transform.position;
         
@@ -39,6 +38,7 @@ public class InkyChase : MonoBehaviour
         _Blinky = GameObject.Find("Blinky");
         _pacman = _target.GetComponent<PacManController>();
         _nav = GetComponent<NavMeshAgent>();
+        _nav.speed = 4;
     }
 
     void Update(){
