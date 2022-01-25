@@ -2147,7 +2147,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2423,6 +2423,7 @@ GameObject:
   - component: {fileID: 555330697}
   - component: {fileID: 555330698}
   - component: {fileID: 555330696}
+  - component: {fileID: 555330699}
   m_Layer: 3
   m_Name: Clyde
   m_TagString: Enemy
@@ -2528,7 +2529,6 @@ MonoBehaviour:
   _ghostID: 3
   _dispersiontarget: {fileID: 1387632066}
   _nav: {fileID: 555330690}
-  _col: {fileID: 0}
 --- !u!114 &555330696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2568,6 +2568,7 @@ MonoBehaviour:
   _animator: {fileID: 0}
   _animationVulnerable: {fileID: 0}
   _animationNormal: {fileID: 0}
+  _animationReturn: {fileID: 0}
 --- !u!114 &555330698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2583,7 +2584,23 @@ MonoBehaviour:
   _me: {fileID: 555330687}
   _returnPosition: {x: 11, y: 0, z: 11.5}
   _nav: {fileID: 555330690}
-  _col: {fileID: 555330692}
+  _ghostID: 3
+  _animator: {fileID: 0}
+  _animationNormal: {fileID: 0}
+--- !u!114 &555330699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555330687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa53fdfbbf487d74c8bd7d4c35ac81ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _me: {fileID: 0}
+  _vulnerable: {fileID: 0}
   _ghostID: 3
 --- !u!1 &557986539
 GameObject:
@@ -3570,7 +3587,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6616,6 +6633,7 @@ GameObject:
   - component: {fileID: 1428502614}
   - component: {fileID: 1428502615}
   - component: {fileID: 1428502613}
+  - component: {fileID: 1428502616}
   m_Layer: 3
   m_Name: Inky
   m_TagString: Enemy
@@ -6722,7 +6740,6 @@ MonoBehaviour:
   _ghostID: 1
   _dispersiontarget: {fileID: 1305120141}
   _nav: {fileID: 1428502608}
-  _col: {fileID: 0}
 --- !u!114 &1428502613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6762,6 +6779,7 @@ MonoBehaviour:
   _animator: {fileID: 0}
   _animationVulnerable: {fileID: 0}
   _animationNormal: {fileID: 0}
+  _animationReturn: {fileID: 0}
 --- !u!114 &1428502615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6777,7 +6795,23 @@ MonoBehaviour:
   _me: {fileID: 1428502605}
   _returnPosition: {x: 9, y: 0, z: 11.5}
   _nav: {fileID: 1428502608}
-  _col: {fileID: 1428502609}
+  _ghostID: 1
+  _animator: {fileID: 0}
+  _animationNormal: {fileID: 0}
+--- !u!114 &1428502616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428502605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa53fdfbbf487d74c8bd7d4c35ac81ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _me: {fileID: 0}
+  _vulnerable: {fileID: 0}
   _ghostID: 1
 --- !u!1 &1441783252
 GameObject:
@@ -6796,6 +6830,7 @@ GameObject:
   - component: {fileID: 1441783260}
   - component: {fileID: 1441783263}
   - component: {fileID: 1441783259}
+  - component: {fileID: 1441783264}
   m_Layer: 3
   m_Name: Blinky
   m_TagString: Enemy
@@ -6910,6 +6945,7 @@ MonoBehaviour:
   _animator: {fileID: 0}
   _animationVulnerable: {fileID: 0}
   _animationNormal: {fileID: 0}
+  _animationReturn: {fileID: 0}
 --- !u!114 &1441783261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6925,7 +6961,6 @@ MonoBehaviour:
   _ghostID: 0
   _dispersiontarget: {fileID: 1748103004}
   _nav: {fileID: 1441783256}
-  _col: {fileID: 0}
 --- !u!114 &1441783262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6955,7 +6990,23 @@ MonoBehaviour:
   _me: {fileID: 1441783252}
   _returnPosition: {x: 9, y: 0, z: 13.5}
   _nav: {fileID: 1441783256}
-  _col: {fileID: 1441783258}
+  _ghostID: 0
+  _animator: {fileID: 0}
+  _animationNormal: {fileID: 0}
+--- !u!114 &1441783264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441783252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa53fdfbbf487d74c8bd7d4c35ac81ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _me: {fileID: 0}
+  _vulnerable: {fileID: 0}
   _ghostID: 0
 --- !u!1 &1456787598
 GameObject:
@@ -9090,6 +9141,7 @@ GameObject:
   - component: {fileID: 2026016360}
   - component: {fileID: 2026016361}
   - component: {fileID: 2026016359}
+  - component: {fileID: 2026016362}
   m_Layer: 3
   m_Name: Pinky
   m_TagString: Enemy
@@ -9195,7 +9247,6 @@ MonoBehaviour:
   _ghostID: 2
   _dispersiontarget: {fileID: 649425690}
   _nav: {fileID: 2026016354}
-  _col: {fileID: 0}
 --- !u!114 &2026016359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9235,6 +9286,7 @@ MonoBehaviour:
   _animator: {fileID: 0}
   _animationVulnerable: {fileID: 0}
   _animationNormal: {fileID: 0}
+  _animationReturn: {fileID: 0}
 --- !u!114 &2026016361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9250,7 +9302,23 @@ MonoBehaviour:
   _me: {fileID: 2026016351}
   _returnPosition: {x: 7, y: 0, z: 11.5}
   _nav: {fileID: 2026016354}
-  _col: {fileID: 2026016355}
+  _ghostID: 2
+  _animator: {fileID: 0}
+  _animationNormal: {fileID: 0}
+--- !u!114 &2026016362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026016351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa53fdfbbf487d74c8bd7d4c35ac81ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _me: {fileID: 0}
+  _vulnerable: {fileID: 0}
   _ghostID: 2
 --- !u!1 &2033479442
 GameObject:

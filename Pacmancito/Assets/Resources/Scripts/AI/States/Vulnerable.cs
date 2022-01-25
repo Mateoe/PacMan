@@ -35,9 +35,10 @@ public class Vulnerable : MonoBehaviour
     [SerializeField]
     private RuntimeAnimatorController _animationNormal;
 
+    [SerializeField]
+    private RuntimeAnimatorController _animationReturn;
 
-
-    
+  
     public void VulnerableState()
     {
 
@@ -71,7 +72,7 @@ public class Vulnerable : MonoBehaviour
         _auxtimer = _timer;
         _animator = GetComponentInChildren<Animator>();
         _animationVulnerable = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Vulnerable_1.controller");               
-        
+        _animationReturn = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Return.controller");
         if(_ghostID == GhostID.Blinlky)
         {
             _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Red_CON.controller");
@@ -88,22 +89,30 @@ public class Vulnerable : MonoBehaviour
         {
             _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Orange_CON.controller");
         }
-        _animator.runtimeAnimatorController =_animationVulnerable;
+        
+
+        EventSystem.OnGhostDeath += ReturnAnim;
 
     }
 
     void Update()
     {
+        if(_animator.runtimeAnimatorController !=_animationVulnerable)
+        {
+            _animator.runtimeAnimatorController =_animationVulnerable;
+        }
+        
         _timer -= Time.deltaTime;
         Debug.Log(_timer);
         VulnerableState();
     }
 
-    void OnTriggerEnter(Collider collider)
+    void ReturnAnim()
     {
-        if(collider.gameObject.tag == "Player")
+        if(EventSystem.ghost == _ghostID)
         {
-            EventSystem.GhostDeath(_ghostID);
+            _animator.runtimeAnimatorController =_animationReturn;
         }
+        
     }
 }

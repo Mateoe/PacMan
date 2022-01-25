@@ -163,11 +163,6 @@ public class PacManController : MonoBehaviour
         {
             EventSystem.PacManEnergized();
         }
-
-        if(col.gameObject.tag == "Enemy")
-        {
-            EventSystem.PacManDeath();
-        }
     }
 
     void Death()
