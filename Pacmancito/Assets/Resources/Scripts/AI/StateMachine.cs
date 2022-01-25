@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class StateMachine : MonoBehaviour
 {
@@ -27,10 +28,14 @@ public class StateMachine : MonoBehaviour
 
     [SerializeField]
     private Return _returnScript;
+
+    [SerializeField]
+    private NavMeshAgent _nav;
     
 
     void Start()
     {
+        _nav = gameObject.GetComponent<NavMeshAgent>();
 
         if(_ghostID == GhostID.Blinlky){
             _blinkyChase= gameObject.GetComponent<BlinkyChase>();
@@ -62,9 +67,10 @@ public class StateMachine : MonoBehaviour
     {
         if(EventSystem.ghost == _ghostID)
         {
-            _dispersionScript.enabled = false;
-            _vulnerableScript.enabled = false;
-            _returnScript.enabled = false;
+            _nav.enabled = false;
+            _dispersionScript.Exit();
+            _vulnerableScript.Exit();
+            _returnScript.Exit();
 
             if(_blinkyChase != null){
                 _blinkyChase.enabled = true;
@@ -78,28 +84,32 @@ public class StateMachine : MonoBehaviour
             if(_clydeChase != null){
                 _clydeChase.enabled = true;
             }
+            _nav.enabled = true;
 
         }
     }
 
     public void EnterVulnerable()
     {
-        _dispersionScript.enabled = false;
-        _vulnerableScript.enabled = true;
-        _returnScript.enabled = false;
+        _nav.enabled = false;
+        _dispersionScript.Exit(); 
+        _returnScript.Exit();
 
         if(_blinkyChase != null){
-            _blinkyChase.enabled = false;
+            _blinkyChase.Exit();
         }
         if(_inkyChase != null){
-            _inkyChase.enabled = false;
+            _inkyChase.Exit();
         }
         if(_pinkyChase != null){
-            _pinkyChase.enabled = false;
+            _pinkyChase.Exit();
         }
         if(_clydeChase != null){
-            _clydeChase.enabled = false;
-        }     
+            _clydeChase.Exit();
+        }  
+
+        _vulnerableScript.enabled = true; 
+        _nav.enabled = true;
     }
 
     public void EnterDispersion()
@@ -107,22 +117,25 @@ public class StateMachine : MonoBehaviour
 
         if(EventSystem.ghost == _ghostID)
         {
-            _dispersionScript.enabled = true;
-            _vulnerableScript.enabled = false;
-            _returnScript.enabled = false;
+            _nav.enabled = false;
+            _vulnerableScript.Exit();
+            _returnScript.Exit();
 
             if(_blinkyChase != null){
-                _blinkyChase.enabled = false;
+                _blinkyChase.Exit();
             }
             if(_inkyChase != null){
-                _inkyChase.enabled = false;
+                _inkyChase.Exit();
             }
             if(_pinkyChase != null){
-                _pinkyChase.enabled = false;
+                _pinkyChase.Exit();
             }
             if(_clydeChase != null){
-                _clydeChase.enabled = false;
+                _clydeChase.Exit();
             }
+
+            _dispersionScript.enabled = true;
+            _nav.enabled = true;
         }
     }
 
@@ -130,22 +143,25 @@ public class StateMachine : MonoBehaviour
     {
         if(EventSystem.ghost == _ghostID)
         {
-            _dispersionScript.enabled = false;
-            _vulnerableScript.enabled = false;
-            _returnScript.enabled = true;
+            _nav.enabled = false;
+            _dispersionScript.Exit();
+            _vulnerableScript.Exit();
 
             if(_blinkyChase != null){
-                _blinkyChase.enabled = false;
+                _blinkyChase.Exit();
             }
             if(_inkyChase != null){
-                _inkyChase.enabled = false;
+                _inkyChase.Exit();
             }
             if(_pinkyChase != null){
-                _pinkyChase.enabled = false;
+                _pinkyChase.Exit();
             }
             if(_clydeChase != null){
-                _clydeChase.enabled = false;
+                _clydeChase.Exit();
             }
+
+            _returnScript.enabled = true;
+            _nav.enabled = false;
         }
     }
 

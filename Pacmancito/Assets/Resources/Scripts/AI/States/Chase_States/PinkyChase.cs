@@ -41,4 +41,10 @@ public class PinkyChase : MonoBehaviour
     void Update(){
         AmbushChase();
     }
+
+    public void Exit()
+    {
+
+        this.enabled = false;
+    }
 }

@@ -52,4 +52,10 @@ public class Dispersion : MonoBehaviour
         
         _nav.SetDestination(_dispersiontarget.transform.position);
     }
+
+    public void Exit()
+    {
+
+        this.enabled = false;
+    }
 }

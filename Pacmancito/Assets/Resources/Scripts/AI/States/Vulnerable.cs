@@ -90,7 +90,6 @@ public class Vulnerable : MonoBehaviour
             _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Orange_CON.controller");
         }
         
-
         EventSystem.OnGhostDeath += ReturnAnim;
 
     }
@@ -114,5 +113,10 @@ public class Vulnerable : MonoBehaviour
             _animator.runtimeAnimatorController =_animationReturn;
         }
         
+    }
+
+    public void Exit()
+    {
+        this.enabled = false;
     }
 }

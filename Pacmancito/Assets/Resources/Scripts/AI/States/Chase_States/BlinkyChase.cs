@@ -29,4 +29,10 @@ public class BlinkyChase : MonoBehaviour
     void Update(){
         AgressiveChase();
     }
+
+    public void Exit()
+    {
+
+        this.enabled = false;
+    }
 }

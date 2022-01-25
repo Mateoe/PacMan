@@ -44,4 +44,10 @@ public class InkyChase : MonoBehaviour
     void Update(){
         PatrolChase();
     }
+
+    public void Exit()
+    {
+
+        this.enabled = false;
+    }
 }

@@ -2147,7 +2147,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2549,6 +2549,7 @@ MonoBehaviour:
   _vulnerableScript: {fileID: 555330697}
   _dispersionScript: {fileID: 555330695}
   _returnScript: {fileID: 555330698}
+  _nav: {fileID: 0}
 --- !u!114 &555330697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6760,6 +6761,7 @@ MonoBehaviour:
   _vulnerableScript: {fileID: 1428502614}
   _dispersionScript: {fileID: 1428502612}
   _returnScript: {fileID: 1428502615}
+  _nav: {fileID: 0}
 --- !u!114 &1428502614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6926,6 +6928,7 @@ MonoBehaviour:
   _vulnerableScript: {fileID: 1441783260}
   _dispersionScript: {fileID: 1441783261}
   _returnScript: {fileID: 1441783263}
+  _nav: {fileID: 0}
 --- !u!114 &1441783260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9267,6 +9270,7 @@ MonoBehaviour:
   _vulnerableScript: {fileID: 2026016360}
   _dispersionScript: {fileID: 2026016358}
   _returnScript: {fileID: 2026016361}
+  _nav: {fileID: 0}
 --- !u!114 &2026016360
 MonoBehaviour:
   m_ObjectHideFlags: 0

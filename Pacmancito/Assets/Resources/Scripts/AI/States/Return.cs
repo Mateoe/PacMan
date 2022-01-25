@@ -73,4 +73,9 @@ public class Return : MonoBehaviour
         }
         
     }
+
+    public void Exit()
+    {
+        this.enabled = false;
+    }
 }

@@ -40,4 +40,10 @@ public class ClydeChase : MonoBehaviour
     void Update(){
         RandomChase();
     }
+
+    public void Exit()
+    {
+
+        this.enabled = false;
+    }
 }
