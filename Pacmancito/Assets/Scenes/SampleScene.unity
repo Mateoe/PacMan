@@ -633,6 +633,10 @@ PrefabInstance:
       propertyPath: points
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 3758327131408275495, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
+      propertyPath: _pelletGenerator
+      value: 
+      objectReference: {fileID: 1063492267}
     - target: {fileID: 4627802673814940830, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2215,7 +2219,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2545796332513159233, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
       propertyPath: m_Name
-      value: LargePellet (1)
+      value: LargePellet(1)
       objectReference: {fileID: 0}
     - target: {fileID: 2545796332513159233, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
       propertyPath: m_TagString
@@ -2225,6 +2229,10 @@ PrefabInstance:
       propertyPath: points
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 3758327131408275495, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
+      propertyPath: _pelletGenerator
+      value: 
+      objectReference: {fileID: 1063492267}
     - target: {fileID: 4627802673814940830, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2513,7 +2521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pathpointsparent: {fileID: 1537215800}
   _pathpoints: []
-  _nav: {fileID: 1441783256}
+  _nav: {fileID: 555330690}
 --- !u!114 &555330695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,6 +2596,7 @@ MonoBehaviour:
   _ghostID: 3
   _animator: {fileID: 0}
   _animationNormal: {fileID: 0}
+  _col: {fileID: 0}
 --- !u!114 &555330699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3188,7 +3197,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 19d5c6cea399aa54ca4b64437036e080, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3576,6 +3585,8 @@ MonoBehaviour:
   _clip1: {fileID: 8300000, guid: bab9e5f75560d984d8e65c949d4f7c63, type: 3}
   _clip2: {fileID: 8300000, guid: 1086f65152337b54ba757ce10a97905d, type: 3}
   _clip3: {fileID: 8300000, guid: cf70dc86111d6eb45891f6de7d15169c, type: 3}
+  _pelletList: []
+  _generator: {fileID: 0}
 --- !u!82 &659781228
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3588,7 +3599,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4724,7 +4735,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2545796332513159233, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
       propertyPath: m_Name
-      value: LargePellet (3)
+      value: LargePellet(3)
       objectReference: {fileID: 0}
     - target: {fileID: 2545796332513159233, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
       propertyPath: m_TagString
@@ -4734,6 +4745,10 @@ PrefabInstance:
       propertyPath: points
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 3758327131408275495, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
+      propertyPath: _pelletGenerator
+      value: 
+      objectReference: {fileID: 1063492267}
     - target: {fileID: 4627802673814940830, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -6800,6 +6815,7 @@ MonoBehaviour:
   _ghostID: 1
   _animator: {fileID: 0}
   _animationNormal: {fileID: 0}
+  _col: {fileID: 0}
 --- !u!114 &1428502616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6996,6 +7012,7 @@ MonoBehaviour:
   _ghostID: 0
   _animator: {fileID: 0}
   _animationNormal: {fileID: 0}
+  _col: {fileID: 0}
 --- !u!114 &1441783264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7477,7 +7494,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2545796332513159233, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
       propertyPath: m_Name
-      value: LargePellet (2)
+      value: LargePellet(2)
       objectReference: {fileID: 0}
     - target: {fileID: 2545796332513159233, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
       propertyPath: m_TagString
@@ -7487,6 +7504,10 @@ PrefabInstance:
       propertyPath: points
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 3758327131408275495, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
+      propertyPath: _pelletGenerator
+      value: 
+      objectReference: {fileID: 1063492267}
     - target: {fileID: 4627802673814940830, guid: 2953b4ff82a5b144bb486b849f4ffe1f, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9309,6 +9330,7 @@ MonoBehaviour:
   _ghostID: 2
   _animator: {fileID: 0}
   _animationNormal: {fileID: 0}
+  _col: {fileID: 0}
 --- !u!114 &2026016362
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,19 +14,17 @@ public class PelletGenerator : MonoBehaviour
     float initial_z = -3.5f;
     float final_x = 21.5f;
     float final_z = 24.5f;
+
     
     // Start is called before the first frame update
     void Start()
     {
-
         for (float zposition = initial_z; zposition <= final_z; zposition++){
-            for (float xposition = initial_x; xposition <= final_x; xposition++){
-                // go.position = new Vector3(xposition, 0, zposition);
-                // if (go.position.IsValid()){
-                // } else {
-                    GameObject _instance = Instantiate(Pellet, new Vector3(xposition, 0, zposition), Quaternion.identity);
-                    _instance.transform.SetParent(_generator.transform);
-                // }
+            for (float xposition = initial_x; xposition <= final_x; xposition++)
+            {
+                GameObject _instance = Instantiate(Pellet, new Vector3(xposition, 0, zposition), Quaternion.identity);
+                _instance.transform.SetParent(_generator.transform);
+
             }
         }
     }

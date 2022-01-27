@@ -92,6 +92,7 @@ public class Vulnerable : MonoBehaviour
         
         EventSystem.OnGhostDeath += ReturnAnim;
 
+
     }
 
     void Update()

@@ -26,6 +26,8 @@ public class PacManController : MonoBehaviour
     [SerializeField]
     private AudioSource _audio;
 
+    private Manage _manage;
+
 
     void Start()
     {   
@@ -40,6 +42,7 @@ public class PacManController : MonoBehaviour
         _inNode = true;
         _newDirection = Vector3.zero;
         _PacManSprite = _PacManBody.GetComponent<SpriteRenderer>().sprite;
+        _manage = GameObject.Find("GameManager").GetComponent<Manage>();
 
         EventSystem.OnPacManDeath += Death;
 

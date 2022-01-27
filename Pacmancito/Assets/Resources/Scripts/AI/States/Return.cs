@@ -26,10 +26,15 @@ public class Return : MonoBehaviour
     [SerializeField]
     private RuntimeAnimatorController _animationNormal;
 
+    [SerializeField]
+
+    private Collider _col;
+
     void Start()
     {
         _me = this.gameObject;
         _nav = _me.GetComponent<NavMeshAgent>();
+        _col = gameObject.GetComponent<Collider>();
         _nav.speed = 6;
         _animator = gameObject.GetComponentInChildren<Animator>();
 
@@ -53,6 +58,8 @@ public class Return : MonoBehaviour
             _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Orange_CON.controller");
         }
         EventSystem.OnGhostArrive += NormalAnim;
+
+        _col.enabled = false;
     }
 
     void Update()
@@ -61,6 +68,7 @@ public class Return : MonoBehaviour
 
         if(Vector3.Magnitude(_me.transform.position-_returnPosition)<0.05)
         {
+            _col.enabled = true;
             EventSystem.GhostArrive(_ghostID);
         }
     }
@@ -76,6 +84,7 @@ public class Return : MonoBehaviour
 
     public void Exit()
     {
+
         this.enabled = false;
     }
 }

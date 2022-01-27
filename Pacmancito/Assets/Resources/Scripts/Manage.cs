@@ -39,6 +39,12 @@ public class Manage : MonoBehaviour
 
     private bool _energized;
 
+    [SerializeField]
+    public List<GameObject> _pelletList;
+
+    [SerializeField]
+    private GameObject _generator;
+
 
     void Start()
     {
@@ -47,6 +53,7 @@ public class Manage : MonoBehaviour
         _pacmanAudio = PacMan.GetComponent<AudioSource>();
         _audio.clip = _clip1;
         _score = GameObject.Find("CurrentScore").GetComponent<CurrentScore>();
+        _generator = GameObject.Find("Generator");
         _energized = false;
         _auxtimer = _vulnerabletime;
 
@@ -54,8 +61,20 @@ public class Manage : MonoBehaviour
         EventSystem.OnStartGame += game;
         EventSystem.OnPacManEnergized += Energized;
         EventSystem.OnGhostArrive += Normal;
+        EventSystem.OnPacManDeath += DeathSound;
 
         EventSystem.StartButtonPulse();
+
+        
+        for(int i = 0; i < _generator.transform.childCount; i++)
+        {
+            _pelletList.Add(_generator.transform.GetChild(i).gameObject);
+        }
+
+        for(int i = 0; i < GameObject.Find("EnergizerPellets").transform.childCount; i++)
+        {
+            _pelletList.Add(GameObject.Find("EnergizerPellets").transform.GetChild(i).gameObject);
+        }
     }
     void GameStarted()
     {
@@ -108,6 +127,13 @@ public class Manage : MonoBehaviour
             _auxtimer = _vulnerabletime;
             _energized = false;
         }
+    }
+
+    void DeathSound()
+    {
+        _audio.loop = false;
+        _audio.clip = _clip2;
+        _audio.Play();
     }
 
 }

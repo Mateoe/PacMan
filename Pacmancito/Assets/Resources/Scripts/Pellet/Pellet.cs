@@ -8,28 +8,38 @@ public class Pellet : MonoBehaviour
     [SerializeField]
     private GameObject _me;
 
+    [SerializeField]
+    private PelletGenerator _pelletGenerator;
+
+    [SerializeField]
+    private Manage _manage;
+
     void Start()
     {
         _me = this.gameObject;
+        _pelletGenerator = GameObject.Find("Generator").GetComponent<PelletGenerator>();
+        _manage = GameObject.Find("GameManager").GetComponent<Manage>();
 
         if((transform.position.x >= 2.5) && (transform.position.x <= 15.5))
         {
-            if ((transform.position.z >= 6.5) && (transform.position.z <= 16.5)){
+            if ((transform.position.z >= 6.5) && (transform.position.z <= 16.5))
+            {
+
                 Destroy(_me);
             }
         }
 
         if ((transform.position.z == 11.5) && ( transform.position.x <=  0.5 || transform.position.x >=  17.5 ))
         {
-                Destroy(_me);
+
+            Destroy(_me);
         }
     }
 
-
     public void Eat()
     {
-        gameObject.SetActive(false);
         PacManController.AcumPoints(points);
+        Destroy(_me);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -38,8 +48,17 @@ public class Pellet : MonoBehaviour
         {
             Eat();
         }
-        else if(collision.gameObject.tag == "Wall"){
-            //gameObject.SetActive(false);
+        else if(collision.gameObject.tag == "Wall")
+        {
+            Destroy(_me);
+        }
+    }
+
+    private void DestroyPellet()
+    {
+        if(_manage.gameObject.activeInHierarchy == true)
+        {
+            _manage._pelletList.Remove(_me);
             Destroy(_me);
         }
     }

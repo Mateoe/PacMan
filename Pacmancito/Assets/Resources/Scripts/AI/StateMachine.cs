@@ -161,7 +161,7 @@ public class StateMachine : MonoBehaviour
             }
 
             _returnScript.enabled = true;
-            _nav.enabled = false;
+            _nav.enabled = true;
         }
     }
 
