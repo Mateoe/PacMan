@@ -19,7 +19,6 @@ public static class SaveLoad
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(fullPath + Filename + ".json",json);
 
-        Debug.LogError(fullPath);
     }
 
     public static T Load<T>(string Path, string Name)

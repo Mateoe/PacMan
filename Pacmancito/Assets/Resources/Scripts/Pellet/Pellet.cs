@@ -11,14 +11,10 @@ public class Pellet : MonoBehaviour
     [SerializeField]
     private PelletGenerator _pelletGenerator;
 
-    [SerializeField]
-    private Manage _manage;
-
     void Start()
     {
         _me = this.gameObject;
         _pelletGenerator = GameObject.Find("Generator").GetComponent<PelletGenerator>();
-        _manage = GameObject.Find("GameManager").GetComponent<Manage>();
 
         if((transform.position.x >= 2.5) && (transform.position.x <= 15.5))
         {
@@ -50,15 +46,6 @@ public class Pellet : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Wall")
         {
-            Destroy(_me);
-        }
-    }
-
-    private void DestroyPellet()
-    {
-        if(_manage.gameObject.activeInHierarchy == true)
-        {
-            _manage._pelletList.Remove(_me);
             Destroy(_me);
         }
     }

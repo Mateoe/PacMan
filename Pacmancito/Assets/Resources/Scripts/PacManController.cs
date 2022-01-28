@@ -22,11 +22,23 @@ public class PacManController : MonoBehaviour
     bool _inNode;
     Vector3 _newDirection;
     Sprite _PacManSprite;
+    private Animator _PacManAnimator;
+    
+    [SerializeField]
+    private RuntimeAnimatorController _PacmanDeathAnimation;
 
     [SerializeField]
     private AudioSource _audio;
 
+    private float _timedeath;
+    private float _auxtimer;
+    
+    private bool animationDeath = false;
+
+    private bool deathActive = false;
+
     private Manage _manage;
+
 
 
     void Start()
@@ -42,8 +54,10 @@ public class PacManController : MonoBehaviour
         _inNode = true;
         _newDirection = Vector3.zero;
         _PacManSprite = _PacManBody.GetComponent<SpriteRenderer>().sprite;
-        _manage = GameObject.Find("GameManager").GetComponent<Manage>();
-
+        
+        _PacManAnimator = _PacManBody.GetComponent<Animator>();
+        _PacmanDeathAnimation = Resources.Load("Animations/Pacman_Death_01") as RuntimeAnimatorController;
+        _timedeath = 1.1f;
         EventSystem.OnPacManDeath += Death;
 
     }
@@ -51,9 +65,31 @@ public class PacManController : MonoBehaviour
     void Update()
     {   
         //En cada frame se lee el movimiento del jugador
-        GetDirection();
-        scoreRead();
-        move();
+        if (animationDeath)
+        {
+            _auxtimer-=Time.deltaTime;
+        }
+        
+        else{
+            GetDirection();
+            scoreRead();
+            move();
+        }
+
+        if (_auxtimer <= 0)
+        {
+            animationDeath = false;
+            if (deathActive == true)
+            {
+                deathActive = false;
+                transform.position = new Vector3(9,0,2.5f);
+                _PacManAnimator.runtimeAnimatorController = Resources.Load("Animations/Pacman_0") as RuntimeAnimatorController;
+                _PacManAnimator.enabled = false;
+                EventSystem.PacManDeathExit();
+            }
+            
+
+        }
         
 
         //Se plica el movimiento  
@@ -131,6 +167,7 @@ public class PacManController : MonoBehaviour
     
     public static void AcumPoints(int points)
     {
+        Manage.PelletReduce();
         score += points;
     }
 
@@ -171,6 +208,11 @@ public class PacManController : MonoBehaviour
     void Death()
     {
         Debug.Log("You Lost");
-        transform.position = new Vector3(9,0,2.5f);
+        _PacManAnimator.enabled = true;
+        _newDirection = Vector3.forward;
+        _PacManAnimator.runtimeAnimatorController = _PacmanDeathAnimation;
+        _auxtimer = _timedeath;
+        animationDeath = true;
+        deathActive = true;
     }
 }

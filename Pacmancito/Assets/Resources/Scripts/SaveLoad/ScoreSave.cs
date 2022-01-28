@@ -42,7 +42,6 @@ public class ScoreSave : MonoBehaviour
 
     void HighScore()
     {
-        Debug.LogError(_score);
         if(_scoredata.highscore < _score)
         {
             _scoredata.highscore = _score;

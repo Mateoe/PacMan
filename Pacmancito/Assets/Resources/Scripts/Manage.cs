@@ -40,10 +40,16 @@ public class Manage : MonoBehaviour
     private bool _energized;
 
     [SerializeField]
-    public List<GameObject> _pelletList;
+    public static int _pelletCount;
 
     [SerializeField]
     private GameObject _generator;
+
+    private Vector3 _pacManPosition;
+    private Vector3 _blinkyPosition;
+    private Vector3 _inkyPosition;
+    private Vector3 _pinkyPosition;
+    private Vector3 _clydePosition;
 
 
     void Start()
@@ -62,19 +68,10 @@ public class Manage : MonoBehaviour
         EventSystem.OnPacManEnergized += Energized;
         EventSystem.OnGhostArrive += Normal;
         EventSystem.OnPacManDeath += DeathSound;
+        EventSystem.OnPacManDeath += Deactivate;
+        EventSystem.OnPacManDeathExit += Reset;
 
         EventSystem.StartButtonPulse();
-
-        
-        for(int i = 0; i < _generator.transform.childCount; i++)
-        {
-            _pelletList.Add(_generator.transform.GetChild(i).gameObject);
-        }
-
-        for(int i = 0; i < GameObject.Find("EnergizerPellets").transform.childCount; i++)
-        {
-            _pelletList.Add(GameObject.Find("EnergizerPellets").transform.GetChild(i).gameObject);
-        }
     }
     void GameStarted()
     {
@@ -90,12 +87,29 @@ public class Manage : MonoBehaviour
     void game()
     {
         Debug.Log("start");
+
+        for(int i = 0; i < _generator.transform.childCount; i++)
+        {
+            _pelletCount +=1;
+        }
+
+        for(int i = 0; i < GameObject.Find("EnergizerPellets").transform.childCount; i++)
+        {
+            _pelletCount +=1;
+        }
+
         PacMan.SetActive(true);
         Blinky.SetActive(true);
         Pinky.SetActive(true);
         Inky.SetActive(true);
         Clyde.SetActive(true);
         _score.enabled = true;
+
+        _pacManPosition = PacMan.transform.position;
+        _blinkyPosition = Blinky.transform.position;
+        _inkyPosition = Inky.transform.position;
+        _pinkyPosition = Pinky.transform.position;
+        _clydePosition = Clyde.transform.position;
     }
 
     void Energized()
@@ -134,6 +148,44 @@ public class Manage : MonoBehaviour
         _audio.loop = false;
         _audio.clip = _clip2;
         _audio.Play();
+    }
+
+    void Deactivate()
+    {
+        EventSystem.GhostArrive(GhostID.Blinlky);
+        EventSystem.GhostArrive(GhostID.Inky);
+        EventSystem.GhostArrive(GhostID.Pinky);
+        EventSystem.GhostArrive(GhostID.Clyde);
+        Blinky.SetActive(false);
+        Pinky.SetActive(false);
+        Inky.SetActive(false);
+        Clyde.SetActive(false);
+
+    }
+
+    void Reset()
+    {
+        PacMan.transform.position = _pacManPosition;
+        Blinky.transform.position = _blinkyPosition;
+        Pinky.transform.position = _pinkyPosition;
+        Inky.transform.position = _inkyPosition;
+        Clyde.transform.position = _clydePosition;
+
+        PacMan.SetActive(true);
+        Blinky.SetActive(true);
+        Pinky.SetActive(true);
+        Inky.SetActive(true);
+        Clyde.SetActive(true);
+    }
+
+    public static void PelletReduce()
+    {
+        _pelletCount -=1;
+
+        if(_pelletCount == 0)
+        {
+            EventSystem.GameOver();
+        }
     }
 
 }

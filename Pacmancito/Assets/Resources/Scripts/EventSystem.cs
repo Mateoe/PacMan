@@ -9,8 +9,12 @@ public class EventSystem : MonoBehaviour
     public static GhostID ghost;
     public static event Action OnPacManDeath;
     public static void PacManDeath(){
-
         OnPacManDeath?.Invoke();
+    }
+
+    public static event Action OnPacManDeathExit;
+    public static void PacManDeathExit(){
+        OnPacManDeathExit?.Invoke();
     }
 
     public static event Action OnPacManEnergized;
