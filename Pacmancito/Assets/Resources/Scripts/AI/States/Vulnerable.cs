@@ -58,7 +58,6 @@ public class Vulnerable : MonoBehaviour
 
         if(_timer <=0)
         {
-            _timer = _auxtimer;
             _animator.runtimeAnimatorController =_animationNormal;
             EventSystem.GhostArrive(_ghostID); 
         }     
@@ -118,6 +117,12 @@ public class Vulnerable : MonoBehaviour
 
     public void Exit()
     {
+        _timer = _auxtimer;
         this.enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        EventSystem.OnGhostDeath -= ReturnAnim;
     }
 }

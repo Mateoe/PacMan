@@ -54,4 +54,9 @@ public class Lifes : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        EventSystem.OnPacManDeath -= Destroy;
+    }
 }

@@ -13,6 +13,13 @@ public class GameReset : MonoBehaviour
 
     void Reset()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void OnDestroy()
+    {
+        EventSystem.OnGameOver -= Reset;
+        Reset();
     }
 }

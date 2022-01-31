@@ -6,8 +6,6 @@ using UnityEngine.AI;
 
 public class Return : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _me;
 
     [SerializeField]
     private Vector3 _returnPosition;
@@ -26,15 +24,9 @@ public class Return : MonoBehaviour
     [SerializeField]
     private RuntimeAnimatorController _animationNormal;
 
-    [SerializeField]
-
-    private Collider _col;
-
     void Start()
     {
-        _me = this.gameObject;
-        _nav = _me.GetComponent<NavMeshAgent>();
-        _col = gameObject.GetComponent<Collider>();
+        _nav = gameObject.GetComponent<NavMeshAgent>();
         _nav.speed = 6;
         _animator = gameObject.GetComponentInChildren<Animator>();
 
@@ -58,17 +50,14 @@ public class Return : MonoBehaviour
             _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Orange_CON.controller");
         }
         EventSystem.OnGhostArrive += NormalAnim;
-
-        _col.enabled = false;
     }
 
     void Update()
     {
         _nav.SetDestination(_returnPosition);
 
-        if(Vector3.Magnitude(_me.transform.position-_returnPosition)<0.05)
+        if(Vector3.Magnitude(gameObject.transform.position-_returnPosition)<0.05)
         {
-            _col.enabled = true;
             EventSystem.GhostArrive(_ghostID);
         }
     }
@@ -86,5 +75,10 @@ public class Return : MonoBehaviour
     {
 
         this.enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        EventSystem.OnGhostArrive -= NormalAnim;
     }
 }

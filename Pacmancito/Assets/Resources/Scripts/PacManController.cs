@@ -49,6 +49,7 @@ public class PacManController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _PacManBody = GameObject.Find("PacManBody");
         _audio = this.gameObject.GetComponent<AudioSource>();
+        _audio.volume = 0.2f;
         //Asignacion de nodos
         _Nodes = GameObject.FindGameObjectsWithTag("Node");
         _inNode = true;
@@ -57,7 +58,7 @@ public class PacManController : MonoBehaviour
         
         _PacManAnimator = _PacManBody.GetComponent<Animator>();
         _PacmanDeathAnimation = Resources.Load("Animations/Pacman_Death_01") as RuntimeAnimatorController;
-        _timedeath = 1.1f;
+        _timedeath = 1.7f;
         EventSystem.OnPacManDeath += Death;
 
     }
@@ -214,5 +215,10 @@ public class PacManController : MonoBehaviour
         _auxtimer = _timedeath;
         animationDeath = true;
         deathActive = true;
+    }
+
+    private void OnDestroy()
+    {
+        EventSystem.OnPacManDeath -= Death;
     }
 }

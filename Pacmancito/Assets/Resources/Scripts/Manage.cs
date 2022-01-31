@@ -67,10 +67,8 @@ public class Manage : MonoBehaviour
         EventSystem.OnStartGame += game;
         EventSystem.OnPacManEnergized += Energized;
         EventSystem.OnGhostArrive += Normal;
-        EventSystem.OnPacManDeath += DeathSound;
         EventSystem.OnPacManDeath += Deactivate;
         EventSystem.OnPacManDeathExit += Reset;
-
         EventSystem.StartButtonPulse();
     }
     void GameStarted()
@@ -114,7 +112,7 @@ public class Manage : MonoBehaviour
 
     void Energized()
     {
-        _pacmanAudio.volume = 0;
+        _pacmanAudio.mute = true;
         _audio.clip = _clip3;
         _audio.Play();
         _audio.loop = true;
@@ -137,17 +135,10 @@ public class Manage : MonoBehaviour
         if (_auxtimer < 0)
         {
             EventSystem.VulnerableOut();
-            _pacmanAudio.volume = 1;
+            _pacmanAudio.mute = false;
             _auxtimer = _vulnerabletime;
             _energized = false;
         }
-    }
-
-    void DeathSound()
-    {
-        _audio.loop = false;
-        _audio.clip = _clip2;
-        _audio.Play();
     }
 
     void Deactivate()
@@ -160,6 +151,10 @@ public class Manage : MonoBehaviour
         Pinky.SetActive(false);
         Inky.SetActive(false);
         Clyde.SetActive(false);
+
+        _audio.loop = false;
+        _audio.clip = _clip2;
+        _audio.Play();
 
     }
 
@@ -186,6 +181,16 @@ public class Manage : MonoBehaviour
         {
             EventSystem.GameOver();
         }
+    }
+
+    private void OnDestroy()
+    {
+        EventSystem.OnStartButtonPulse -= GameStarted;
+        EventSystem.OnStartGame -= game;
+        EventSystem.OnPacManEnergized -= Energized;
+        EventSystem.OnGhostArrive -= Normal;
+        EventSystem.OnPacManDeath -= Deactivate;
+        EventSystem.OnPacManDeathExit -= Reset;
     }
 
 }

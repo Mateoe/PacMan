@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class GhostCollision : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _me;
 
     [SerializeField]
     private Vulnerable _vulnerable;
+
+        [SerializeField]
+    private Return _return;
     private bool _active;
 
     [SerializeField]
     private GhostID _ghostID;
     void Start()
     {
-        _me = this.gameObject;
-        _vulnerable = _me.GetComponent<Vulnerable>();
+        _vulnerable = gameObject.GetComponent<Vulnerable>();
+        _return = gameObject.GetComponent<Return>();
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.tag == "Player" && !_vulnerable.enabled)
+        if(col.gameObject.tag == "Player" && !_vulnerable.enabled && !_return.enabled)
         {
             EventSystem.PacManDeath();
         }

@@ -165,5 +165,11 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-
+    private void OnDestroy()
+    {
+        EventSystem.OnGhostDisperse -= EnterChase;
+        EventSystem.OnPacManEnergized -= EnterVulnerable;
+        EventSystem.OnGhostDeath -= EnterReturn;
+        EventSystem.OnGhostArrive -= EnterDispersion;
+    }
 }
