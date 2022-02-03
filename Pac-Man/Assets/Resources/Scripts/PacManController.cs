@@ -64,7 +64,7 @@ public class PacManController : MonoBehaviour
 
         //--Nodo de inicio de pacman
         _startNode = GameObject.Find("P66");
-
+        _startSprite = Resources.Load<Sprite>("Sprites/PacMan/PacMan_2");
         //--
 
         _PacManAnimator = _PacManBody.GetComponent<Animator>();
