@@ -9,7 +9,7 @@ Versión en unity de PacMan uno de los videjuegos más exitosos de la decada de 
 2. Creación de las monedas y power ups consumibles.
 3. Implementación de los fantasmas, los roles que cumple cada uno y su inteligencia artificial.
 4. Implementación del estado vulnerable de los fantas y su destrucción al ser consumidos.
-5. Implementación de la puntuación por partida individual y del ranking general.
+5. Implementación de la puntuación por partida individual y máxima puntuación general.
 6. Implementación del sistema de vidas.
 7. Implementación del reinicio del juego luego del gameover.
 
