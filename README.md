@@ -5,5 +5,6 @@
 
 
 
-**Versión de unity**: 2021.2.5.f1
-**Sprites tomados de**: [Zigurous](https://github.com/zigurous/unity-pacman-tutorial) 
+**Versión de unity usada**: 2021.2.5.f1
+
+**Sprites tomados de**: [Zigurous](https://github.com/zigurous/unity-pacman-tutorial    ) 
