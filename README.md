@@ -3,7 +3,7 @@
 
 ![Screenshot](PacManImg.png)
 
-Versión en unity de PacMan uno de los videjuegos más exitosos de la decada de los 80, para su creación se tuvieron en cuenta aspectos como:
+Versión en unity de PacMan, uno de los videjuegos más exitosos de la decada de los 80. Para su creación se tuvieron en cuenta aspectos como:
 
 1. Implementación del laberinto y movimiento básico del personaje.
 2. Creación de las monedas y power ups consumibles.
