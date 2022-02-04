@@ -29,6 +29,7 @@ public class GhostCollision : MonoBehaviour
 
         if(col.gameObject.tag == "Player" && _vulnerable.enabled)
         {
+            Debug.LogError("fucking Unity");
             EventSystem.GhostDeath(_ghostID);
         }
     }

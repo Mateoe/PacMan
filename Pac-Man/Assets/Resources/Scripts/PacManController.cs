@@ -23,12 +23,6 @@ public class PacManController : MonoBehaviour
     Vector3 _newDirection;
     Sprite _PacManSprite;
     private Animator _PacManAnimator;
-
-    //-- Nodo de inicio de pacman
-     GameObject _startNode;
-     [SerializeField]
-     Sprite _startSprite;
-    //--
     
     [SerializeField]
     private RuntimeAnimatorController _PacmanDeathAnimation;
@@ -45,7 +39,11 @@ public class PacManController : MonoBehaviour
 
     private Manage _manage;
 
-
+    //-- Nodo de inicio de pacman
+     GameObject _startNode;
+     [SerializeField]
+     Sprite _startSprite;
+    //-
 
     void Start()
     {   
@@ -61,16 +59,16 @@ public class PacManController : MonoBehaviour
         _inNode = true;
         _newDirection = Vector3.zero;
         _PacManSprite = _PacManBody.GetComponent<SpriteRenderer>().sprite;
+        
+        _PacManAnimator = _PacManBody.GetComponent<Animator>();
+        _PacmanDeathAnimation = Resources.Load("Animations/Pacman_Death_01") as RuntimeAnimatorController;
+        _timedeath = 1.7f;
+        EventSystem.OnPacManDeath += Death;
 
         //--Nodo de inicio de pacman
         _startNode = GameObject.Find("P66");
         _startSprite = Resources.Load<Sprite>("Sprites/PacMan/PacMan_2");
         //--
-
-        _PacManAnimator = _PacManBody.GetComponent<Animator>();
-        _PacmanDeathAnimation = Resources.Load("Animations/Pacman_Death_01") as RuntimeAnimatorController;
-        _timedeath = 1.7f;
-        EventSystem.OnPacManDeath += Death;
 
     }
 
@@ -95,7 +93,7 @@ public class PacManController : MonoBehaviour
             {
                 deathActive = false;
                 transform.position = new Vector3(9,0,2.5f);
-                
+
                 //--Añadido para controlar que pacman mire hacia arriba y se quede quieto en el nodo de inicio cuando muere
                 _newDirection = Vector3.forward;
                 velocity = 0;
@@ -136,14 +134,16 @@ public class PacManController : MonoBehaviour
 
         //Uso de la función inNode
         InNode();
+
         //--Calcula la distancia entre pacman y el nodo de inicio
         float _startDistance = Vector3.Distance(transform.position,_startNode.GetComponent<Transform>().position);
+
         //Definición de la posibilidad de rotación
         if(_inNode){
             bool canRotate = false;
             bool canContinue = false;
             foreach(Vector3 validDirection in _validDirections){
-               if(_newDirection == validDirection){
+                if(_newDirection == validDirection){
                     canRotate = true;
                     break;
                 }else if(direction == validDirection){
@@ -158,18 +158,19 @@ public class PacManController : MonoBehaviour
                 velocity = 0;
                 _PacManBody.GetComponent<Animator>().enabled = false;
                 _PacManBody.GetComponent<SpriteRenderer>().sprite = _PacManSprite;
-                //--Añadido para controlar la rotación en la muerte
-                if (Math.Abs(_startDistance) < 0.1 && velocity == 0){
-                    _PacManBody.GetComponent<SpriteRenderer>().sprite = _startSprite;
-                }
-                //--
-            }
-                //--Añadido para controlar la rotación en la muerte
-                if (Math.Abs(_startDistance) < 0.1 && velocity == 0){
-                    _PacManBody.GetComponent<SpriteRenderer>().sprite = _startSprite;
-                }
-                //--
 
+                //--Añadido para controlar la rotación en la muerte
+                if (Math.Abs(_startDistance) < 0.1 && velocity == 0){
+                    _PacManBody.GetComponent<SpriteRenderer>().sprite = _startSprite;
+                }
+                //-
+                
+            }
+            //--Añadido para controlar la rotación en la muerte
+            else if (Math.Abs(_startDistance) < 0.1 && velocity == 0){
+                _PacManBody.GetComponent<SpriteRenderer>().sprite = _startSprite;
+            }
+            //-
         }else if(_newDirection == direction*-1){
             direction = _newDirection;
         }
@@ -240,6 +241,7 @@ public class PacManController : MonoBehaviour
     {
         Debug.Log("You Lost");
         _PacManAnimator.enabled = true;
+        _newDirection = Vector3.forward;
         _PacManAnimator.runtimeAnimatorController = _PacmanDeathAnimation;
         _auxtimer = _timedeath;
         animationDeath = true;
