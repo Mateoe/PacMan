@@ -70,23 +70,23 @@ public class Vulnerable : MonoBehaviour
 
         _auxtimer = _timer;
         _animator = GetComponentInChildren<Animator>();
-        _animationVulnerable = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Vulnerable_1.controller");               
-        _animationReturn = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Return.controller");
+        _animationVulnerable = Resources.Load("Animations/Vulnerable_1") as RuntimeAnimatorController;               
+        _animationReturn = Resources.Load("Animations/Return") as RuntimeAnimatorController;
         if(_ghostID == GhostID.Blinlky)
         {
-            _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Red_CON.controller");
+            _animationNormal = Resources.Load("Animations/Red_CON") as RuntimeAnimatorController;
         }
         if(_ghostID == GhostID.Inky)
         {
-            _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Blue_CON.controller");
+            _animationNormal = Resources.Load("Animations/Blue_CON") as RuntimeAnimatorController;
         }
         if(_ghostID == GhostID.Pinky)
         {
-           _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Pink_CON.controller");
+           _animationNormal = Resources.Load("Animations/Pink_CON") as RuntimeAnimatorController;
         }
         if(_ghostID == GhostID.Clyde)
         {
-            _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Orange_CON.controller");
+            _animationNormal = Resources.Load("Animations/Orange_CON") as RuntimeAnimatorController;
         }
         
         EventSystem.OnGhostDeath += ReturnAnim;

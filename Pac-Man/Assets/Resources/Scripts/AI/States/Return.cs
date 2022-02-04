@@ -32,22 +32,22 @@ public class Return : MonoBehaviour
 
         if(_ghostID == GhostID.Blinlky){
             _returnPosition = new Vector3(9,0,13.5f);
-            _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Red_CON.controller");
+            _animationNormal = Resources.Load<UnityEngine.RuntimeAnimatorController>("Animations/Red_CON");
 
         }
         if(_ghostID == GhostID.Inky){
             _returnPosition = new Vector3(9,0,11.5f);
-            _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Blue_CON.controller");
+            _animationNormal = Resources.Load<UnityEngine.RuntimeAnimatorController>("Animations/Blue_CON");
 
         }
         if(_ghostID == GhostID.Pinky){
             _returnPosition = new Vector3(7,0,11.5f);
-            _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Pink_CON.controller");
+            _animationNormal = Resources.Load<UnityEngine.RuntimeAnimatorController>("Animations/Pink_CON");
 
         }
         if(_ghostID == GhostID.Clyde){
             _returnPosition = new Vector3(11,0,11.5f);
-            _animationNormal = AssetDatabase.LoadAssetAtPath<UnityEngine.RuntimeAnimatorController>("Assets/Resources/Animations/Orange_CON.controller");
+            _animationNormal = Resources.Load<UnityEngine.RuntimeAnimatorController>("Animations/Orange_CON");
         }
         EventSystem.OnGhostArrive += NormalAnim;
     }
