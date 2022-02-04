@@ -60,8 +60,32 @@ public class StateMachine : MonoBehaviour
         EventSystem.OnPacManEnergized += EnterVulnerable;
         EventSystem.OnGhostDeath += EnterReturn;
         EventSystem.OnGhostArrive += EnterDispersion;
+        EventSystem.OnGhostInit += GhostStart;
+        EventSystem.GhostInit(); 
+    }
 
-        
+    public void GhostStart()
+    {
+
+        _nav.enabled = false;
+        _vulnerableScript.Exit();
+        _returnScript.Exit();
+
+        if(_blinkyChase != null){
+            _blinkyChase.Exit();
+        }
+        if(_inkyChase != null){
+            _inkyChase.Exit();
+        }
+        if(_pinkyChase != null){
+            _pinkyChase.Exit();
+        }
+        if(_clydeChase != null){
+            _clydeChase.Exit();
+        }
+
+        _dispersionScript.enabled = true;
+        _nav.enabled = true;
     }
     public void EnterChase()
     {
@@ -171,5 +195,6 @@ public class StateMachine : MonoBehaviour
         EventSystem.OnPacManEnergized -= EnterVulnerable;
         EventSystem.OnGhostDeath -= EnterReturn;
         EventSystem.OnGhostArrive -= EnterDispersion;
+        EventSystem.OnGhostInit -= GhostStart;
     }
 }

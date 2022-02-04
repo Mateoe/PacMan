@@ -59,4 +59,9 @@ public class EventSystem : MonoBehaviour
     public static void StartButtonPulse(){
         OnStartButtonPulse?.Invoke();
     }
+
+    public static event Action OnGhostInit;
+    public static void GhostInit(){
+        OnGhostInit?.Invoke();
+    }
 }

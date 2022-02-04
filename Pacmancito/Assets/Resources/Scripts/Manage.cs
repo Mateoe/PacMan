@@ -34,7 +34,7 @@ public class Manage : MonoBehaviour
     [SerializeField]
     private AudioClip _clip3;
 
-    private float _vulnerabletime = Vulnerable._staticTimer;
+    private float _vulnerabletime;
     private float _auxtimer;
 
     private bool _energized;
@@ -61,6 +61,7 @@ public class Manage : MonoBehaviour
         _score = GameObject.Find("CurrentScore").GetComponent<CurrentScore>();
         _generator = GameObject.Find("Generator");
         _energized = false;
+        _vulnerabletime = 8;
         _auxtimer = _vulnerabletime;
 
         EventSystem.OnStartButtonPulse += GameStarted;
@@ -108,6 +109,7 @@ public class Manage : MonoBehaviour
         _inkyPosition = Inky.transform.position;
         _pinkyPosition = Pinky.transform.position;
         _clydePosition = Clyde.transform.position;
+
     }
 
     void Energized()
